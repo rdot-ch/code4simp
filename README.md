@@ -40,3 +40,7 @@ Create enough projects and OAuth Client ID based on the output of this script.
 $ python3 like_videos.py
 ```
 Follow the successive interaction requests to go through the different authentification flows.
+
+
+# Down the rabbit hole,
+Do we still have any excuse to not blindly love all they upload?

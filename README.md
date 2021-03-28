@@ -10,8 +10,8 @@ Project was tested with:
 * Create a project 
 * Create an API key
 * Create an OAuth Client ID
-*     Select your scope : "https://www.googleapis.com/auth/youtube"
-*     Select your test users
+** Select your scope : "https://www.googleapis.com/auth/youtube"
+** Select your test users
 * Enable your app (Youtube Data API v3)
 
  

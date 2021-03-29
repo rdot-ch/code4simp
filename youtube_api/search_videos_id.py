@@ -48,8 +48,6 @@ class SearchVideosId(YoutubeV3API):
 		#Fetch the playlistId of the upload playlist of this channel.
 		#This playlist contains all the videos uploaded by the user.
 		playlist_id=channel_response["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
-		#print(playlist_id)
-		#exit(1)
 		#Go through every page of this playlist and fetch all the videos_id found.
 
 		while(1):

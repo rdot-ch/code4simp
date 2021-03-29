@@ -1,10 +1,10 @@
 #!/usr/bin/python
 
-# This script goes through all the videos id of a specific channel.
+# This script goes through all the video_ids of a specific channel.
 # It then proceeds to like all videos uploaded on this channel.
-# NOTE: To use the sample, you must provide one several secret_code.json obtained
+# NOTE: To use the sample, you must provide one or several secret_code.json obtained
 #       in the Google APIs Console.
-#        You also need to add the user from which the actions will be done
+#       You also need to add the user from which the actions will be done
          #into your test pool in the Google APIs Console.
 
 
@@ -33,7 +33,7 @@ class LikeVideos(YoutubeV3API):
 
 	def check_viability(self):
 		#Taking into account the units consummed that day in the pickle file, 
-		#This methods verify that we have enough units remaining to run the code
+		#This method verifies that we have enough units remaining to run the code
 		#Init
 		viability=None
 
@@ -43,7 +43,7 @@ class LikeVideos(YoutubeV3API):
 		#Retrieve daily quota already used
 		self.daily_quota_already_used=self.inst_quotas.get_current_daily_quota_use()
 
-		#Retrieve max amount of API project needed
+		#Retrieve minimum amount of API project(s) needed
 		self.nbr_of_api_projects=self.inst_quotas.get_nbr_projects_needed()
 
 		#Get available units to run this script, considering you've made available the same amount of projects oath_client_id, as per QuotaEstimation() output
@@ -80,7 +80,7 @@ class LikeVideos(YoutubeV3API):
 
 				#We consider being in the context where only project 1 may have had some units used during quota estimation
 				n_used_quota=0
-				#This literally consider that you use your project units just for the sake of this script.
+				#This literally considers that you use your project units just for the sake of this script.
 				#####
 
 				#Build youtube object and oauth flows
@@ -98,14 +98,14 @@ class LikeVideos(YoutubeV3API):
 					##Quotas
 					quota+=self.cost_dict['video_rate']
 					#####
-					counter+=1 #Following video by video the amount of time we use up the units of one project to like
+					counter+=1 #Following video by video the amount of time we use up the units of one project 
 					
-					#When we reach the unit counter treshold of a specific project, we break this loop to change project
+					#When we reach the unit counter treshold of a specific project, we break out of this loop to change project
 					#and start another oauth flow to use the units of another project.
 					if counter == counter_treshold_per_project[i]:
-						print("One project's units have been totally consummed. Switch to another: \n")
+						print("One project's units have been totally consumed. Switch to another: \n")
 						del(videos_id_list[0:counter]) 
-						#After breaking this nested for loop we will fall back into upper for loop and go back into liking videos listed in videos_id_list
+						#After breaking out from this nested for loop we will fall back into the upper for loop and go back into liking videos listed in videos_id_list
 						#So the latter should be updated and not contained the videos we already liked
 						counter=0 #fresh counter for next Projects
 						break

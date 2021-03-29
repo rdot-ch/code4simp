@@ -114,7 +114,7 @@ class QuotaEstimation(YoutubeV3API):
 		return
 
 	def get_current_daily_quota_use(self):
-		#Method to quikly have access to the object saved in the pickle file.
+		#Method to quickly have access to the object saved in the pickle file.
 		#Returns the units consummed the current day
 		#Load
 		pickle_log_file = open(self.log_file,'rb')
